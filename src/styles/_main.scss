@@ -1,0 +1,151 @@
+@import '_colors.scss';
+@import '_fonts.scss';
+
+$general-border-radius: 15px;
+$prefix: "bwp";
+
+$steps: ("base",0.5,1,2,3,4,5,6,7,8,9,10,11,12,14,16,18,20,24,28,32,26,40,44,48,52,56,60,64,72,80,96,110,126,140);
+
+@each $step in $steps {
+    $radius: $general-border-radius;
+    @if $step != "base" {
+        $radius: #{$step/ 0.5}rem;
+    }
+    .#{$prefix}-rounded-#{$step} {
+        border-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-t-#{$step} {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-b-#{$step} {
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-l-#{$step} {
+        border-bottom-left-radius: $radius;
+        border-top-left-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-tl-#{$step} {
+        border-top-left-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-bl-#{$step} {
+        border-bottom-left-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-r-#{$step} {
+        border-bottom-right-radius: $radius;
+        border-top-right-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-tr-#{$step} {
+        border-top-right-radius: $radius;
+    }
+    
+    .#{$prefix}-rounded-br-#{$step} {
+        border-bottom-right-radius: $radius;
+    }
+}
+
+
+
+
+@each $property, $value in $colors {
+    .#{$prefix}-text-#{$property} {
+        --bwg-txt-color: #{$value};
+        color: #{$value};
+    }
+
+    .#{$prefix}-bg-#{$property} {
+        --bwg-bg-color: #{$value};
+        background-color: #{$value};
+    }
+
+    .#{$prefix}-border-#{$property} {
+        --bwg-border-color: #{$value};
+        border-color: #{$value};
+    }
+
+    .#{$prefix}-fill-#{$property} {
+        --bwg-fill-color: #{$value};
+        fill: #{$value};
+    }
+
+    .hover\:bwp-bg-#{$property} {
+        --bwg-bg-color: #{$value};
+        &:hover { background-color: #{$value}; }
+    }
+
+    .active\:bwp-bg-#{$property} {
+        --bwg-bg-color: #{$value};
+        &:active { background-color: #{$value}; }
+    }
+
+    .focus\:bwp-bg-#{$property} {
+        --bwg-bg-color: #{$value};
+        &:focus { background-color: #{$value}; }
+    }
+
+    @for $i from 1 through 10 {
+        .#{$prefix}-bg-#{$property}-#{$i*100} {
+            --bwp-color-rgb: #{hexToRGB($value)};
+            background-color: rgba(var(--bwp-color-rgb), $i/10 );
+        }
+
+        .hover\:bwp-bg-#{$property}-#{$i*100} {
+            &:hover { 
+                --bwp-color-rgb: #{hexToRGB($value)};
+                background-color: rgba(var(--bwp-color-rgb), $i/10 );
+            }
+        }
+        
+        .active\:bwp-bg-#{$property}-#{$i*100} {
+            &:active { 
+                --bwp-color-rgb: #{hexToRGB($value)};
+                background-color: rgba(var(--bwp-color-rgb), $i/10 );
+            }
+        }
+
+        .focus\:bwp-bg-#{$property}-#{$i*100} {
+            &:focus { 
+                --bwp-color-rgb: #{hexToRGB($value)};
+                background-color: rgba(var(--bwp-color-rgb), $i/10 );
+            }
+        }
+
+    }
+
+    .#{$prefix}-btn-#{$property} {
+        background-color: #{$value};
+        &:hover {
+            filter: brightness(1.1);
+            transition: 200ms;
+        }
+        &:active {
+            filter: brightness(0.9);
+            transition: 200ms;
+        }
+    }
+}
+
+
+.font-family-seto {
+    font-family: "Seto";
+}
+
+.font-family-uzure {
+    font-family: "Uzura";
+}
+
+.font-family-noto {
+    font-family: 'Noto Sans TC', 'Noto Sans HK';
+}
+
+.font-family-indie {
+    font-family: "Indie Flower";
+}

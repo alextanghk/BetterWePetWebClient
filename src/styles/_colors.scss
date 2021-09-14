@@ -1,0 +1,30 @@
+$color-white: #FBFDFB;
+$color-yellow: #FDD400;
+$color-light-green: #00BA74;
+$color-green: #00A666;
+$color-pink: #FDAD9B;
+$color-red: #FF6262;
+$color-blue: #344A94;
+$color-light-grey: #F7F6F2;
+$color-khaki: #F0C57A;
+$color-grey: #E8E4D6;
+$color-dark-grey: #5D5D5D;
+
+$colors: (
+    "white": $color-white,
+    "yellow": $color-yellow,
+    "light-green": $color-light-green,
+    "green": $color-green,
+    "pink": $color-pink,
+    "red": $color-red,
+    "blue": $color-blue,
+    "light-grey": $color-light-grey,
+    "khaki": $color-khaki,
+    "grey": $color-grey,
+    "dark-grey": $color-dark-grey,
+);
+
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+

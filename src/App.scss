@@ -1,0 +1,38 @@
+@import 'styles/_main';
+
+* {
+  font-family: "Seto", "Uzura", 'Noto Sans TC', 'Noto Sans HK', "Indie Flower";
+  box-sizing: border-box;
+}
+
+.bwp-body {
+  min-height: calc(100vh - 8.035rem)
+}
+
+.hover\:bunny {
+  background-image: url("./styles/assets/images/popup/img_popup_ear.png");
+  background-repeat: no-repeat;
+  background-position: center 200%;
+  transition: all ease-in-out 300ms;
+  
+  &:hover {
+    background-position: center 100%;
+    background-color: $color-green;
+  }
+}
+
+.actived\:hidden {
+  display: block;
+}
+.actived\:block {
+  display: none;
+}
+
+.actived {
+  .actived\:hidden {
+    display: none;
+  }
+  .actived\:block {
+    display: block;
+  }
+}

@@ -1,0 +1,18 @@
+// Zh-hk Fonts
+@font-face {
+    font-family: "Uzura";
+    src: url(fonts/uzurafont100/uzura.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Seto";
+    src: url(fonts/setofont/setofont.ttf) format("truetype"),
+         url(fonts/setofont/setofont-ex.ttf) format("truetype");
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;300;400;500;700;900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+// English Fonts
+@font-face {
+    font-family: "Indie Flower";
+    src: url(fonts/IndieFlower-Regular.ttf) format("truetype");
+}
