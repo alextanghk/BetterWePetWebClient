@@ -11,25 +11,31 @@ interface BWPInputProps extends React.HTMLProps<HTMLInputElement> {
 
 const BWPInput:React.FC<BWPInputProps> = (props) => {
     
-    const { icon, className ="", color = "bwp-bg-grey", 
-        large = false, onChange = (e:any) => void(0), 
+    const { icon, className ="", color = "bg-bwp-grey", 
+        large = false,
         textAlign = "left",
-        onIconClick = null, ...rest} = props;
+        onIconClick = null, 
+        onChange=(e:any)=>void(0),
+        ...rest} = props;
     const ref = useRef<HTMLInputElement>(null);
-    const [value, setValue] = useState<string>("");
+    const [value,setValue] = useState<any>(rest.value ? rest.value:"");
     const handleOnChange = (e:any) => {
         setValue(e.target.value);
-        if (onChange !== null && onChange !== undefined) {
-            onChange(e);
-        }
+        onChange(e);
     }
     const handleOnClear = () => {
+        
         if (ref !== null && ref.current !== null) {
-            ref.current.value = "";
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value");
+            if (nativeInputValueSetter !== undefined) {
+                nativeInputValueSetter?.set?.call(ref.current, '');
+            }
+            const customEvent = new Event('input', {bubbles: true});
+            ref.current.dispatchEvent(customEvent);
+            setValue("");
         }
-        setValue("")
     }
-    const defInputClass = "w-auto max-w-full w-full font-family-noto";
+    const inputClass = large ? `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5` : `text-xs rounded-base py-2 ${icon ? "pl-8" : "pl-2"}`
     const defIconClass = "";
 
     return (<>
@@ -38,15 +44,14 @@ const BWPInput:React.FC<BWPInputProps> = (props) => {
                 { icon && <img src={icon} 
                     className={`absolute left-0 top-0 w-auto h-full p-1.5 ${onIconClick === null ? "" : "cursor-pointer"}`} onClick={onIconClick === null ? (e:any) => void(0) : onIconClick} 
                 /> }
-                <input ref={ref} 
+                <input ref={ref } 
                     className={
-                        large ? 
-                        `${defInputClass} ${color} text-2xl px-12 py-2 bwp-rounded-5 text-${textAlign}` :
-                        `${defInputClass} ${color} text-xs bwp-rounded-base py-2 px-8 text-${textAlign}`
+                        `w-auto max-w-full ${value.toString() != "" ? (large? "pr-12" : "pr-8"):"pr-2"} w-full font-family-noto ${color} ${inputClass} text-${textAlign}`
                     } 
-                    onChange={ handleOnChange } {...rest} 
+                    onChange={handleOnChange}
+                    {...rest} 
                 />
-                { value && <img src={IcoClose} 
+                { value.toString() != "" && <img src={IcoClose} 
                     className="cursor-pointer absolute right-0 top-0 w-auto h-full p-2" onClick={handleOnClear} 
                 /> }
             </div>

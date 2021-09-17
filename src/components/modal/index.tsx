@@ -6,29 +6,35 @@ interface MyProps {
     children?: React.ReactNode,
     onClose?: ()=> void,
     open?: boolean,
-    closeButton?: boolean
+    allowClose?: boolean,
+    hideBackdrop?: boolean,
+    allowBackdropClose?: boolean
 }
 
 const Modal:React.FC<MyProps> = ({
     onClose = ()=>void(0),
     open = false,
     children = null,
-    closeButton = true
+    allowClose = true,
+    hideBackdrop = false,
+    allowBackdropClose = true
 }) => {
 
     const wrapperRef = useRef(null);
     clickOutsideAlerter(wrapperRef, ()=> {
-        onClose();
+        if (allowBackdropClose) {
+            onClose();
+        }
     });
 
     return open ? (<>
     <div className="z-40 fixed top-0 left-0 h-screen w-screen">
-        <div className="h-screen absolute top-0 left-0 w-screen bwp-bg-dark-grey opacity-30"></div>
-        <div className="z-40 absolute top-1/2 left-1/2 transform  -translate-x-2/4 -translate-y-2/4" ref={wrapperRef}>
+        { !hideBackdrop && <div className="h-screen absolute top-0 left-0 w-screen bg-bwp-dark-grey opacity-30"></div> }
+        <div className="z-40 absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4" ref={wrapperRef}>
             <div className="relative">
                 { children && children }
                 { 
-                    closeButton && <div className={`absolute top-2 right-2 cursor-pointer`} onClick={()=> { onClose() }}><img src={IcoClose} /></div> 
+                    allowClose && <div className={`absolute top-2 right-2 cursor-pointer`} onClick={()=> { onClose() }}><img src={IcoClose} /></div> 
                 }
             </div>
         </div>

@@ -1,10 +1,12 @@
 import React, { createContext } from 'react';
 
-interface BWPContextProps {
-    loading: boolean,
-    setLoading: (value:boolean) => void
-}
 
+
+interface BWPContextProps {
+    state: any,
+    dispatch: React.Dispatch<any>
+}
 const BWPContext = createContext({} as BWPContextProps);
 
 export { BWPContext };
+export type { BWPContextProps }

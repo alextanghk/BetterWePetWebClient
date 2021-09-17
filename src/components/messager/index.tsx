@@ -15,7 +15,7 @@ function MinMessager() {
         <button className="rounded-full p-1 bwp-btn-green">
           <img src={IcoChatWhite} alt="user" className="w-9 h-9"/>
         </button>
-        <span className="rounded-2xl absolute top-1 left-5 px-1.5 py-0.5 text-xs font-semibold bwp-bg-red bwp-text-white">99+</span>
+        <span className="rounded-2xl absolute top-1 left-5 px-1.5 py-0.5 text-xs font-semibold bg-bwp-red text-bwp-white">99+</span>
       </div>
     </>)
   }

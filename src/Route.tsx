@@ -1,9 +1,12 @@
+import React, { useContext } from "react";
 import {
     Route,
     Redirect,
     RouteProps,
     Switch
 } from 'react-router-dom';
+
+import { BWPContext } from './Context';
 
 // Import Pages
 import HomePage from "./pages/Home";
@@ -18,29 +21,32 @@ import ClinicsSearchPage from "./pages/ClinicsSearch";
 import ClinicsDetailPage from "./pages/ClinicsDetail";
 
 import MyProfilePage from "./pages/MyProfile";
+import UpdateProfilePage from "./pages/Profile/UpdateProfile"
+import ChangePasswordPage from "./pages/Profile/ChangePassword"
+import MyPetsPage from "./pages/Profile/MyPets"
+import PetEditPage from "./pages/Profile/PetDetails"
+
 import MyFavoritePage from "./pages/MyFavorite";
 import MyCartPage from "./pages/MyCart";
 import NotFound from "./pages/NotFound";
 
 interface PrivateRouteProps extends RouteProps {
     component: any;
-    isSignedIn: boolean;
-    login: string;
 }
 
 const PrivateRoute = (props: PrivateRouteProps) => {
-    const { component: Component, isSignedIn, login, ...rest } = props;
-
+    const { component: Component, ...rest } = props;
+    const { state } = useContext(BWPContext);
     return (
         <Route
             {...rest}
             render={(routeProps) =>
-                isSignedIn ? (
+                state.isAuthenticated ? (
                     <Component {...routeProps} />
                 ) : (
                         <Redirect
                             to={{
-                                pathname: login,
+                                pathname: "/sign-in",
                                 state: { from: routeProps.location }
                             }}
                         />
@@ -65,6 +71,12 @@ function MyRoute() {
         { /* Users Page */}
         <Route exact path="/my-cart" component={MyCartPage}/>
         <Route exact path="/my-profile" component={MyProfilePage}/>
+        <Route exact path="/my-profile/update-profile" component={UpdateProfilePage}/>
+        <Route exact path="/my-profile/change-password" component={ChangePasswordPage}/>
+        <Route exact path="/my-profile/pets" component={MyPetsPage}/>
+        <Route exact path="/my-profile/pets/add" component={PetEditPage}/>
+        <Route exact path="/my-profile/pets/:id" component={PetEditPage}/>
+        
         <Route exact path="/my-favorite" component={MyFavoritePage}/>
         
         { /* Error handling */}

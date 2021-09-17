@@ -12,7 +12,7 @@ interface Props {
 
 const LikeButton:React.FC<Props> = (props) => {
     const { className = "", actived, large= false, count } = props;
-    return(<div className={`bwp-bg-white flex flex-row-reverse relative ${className}`}>
+    return(<div className={`bg-bwp-white flex flex-row-reverse relative ${className}`}>
         <div className="px-1">
             <span className="text-base leading-8 font-family-noto">{count}</span>
         </div>

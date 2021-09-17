@@ -22,11 +22,11 @@ const BWPBannerSlider:React.FC<Props> = (props) => {
     slidesToScroll: 1,
     customPaging: (i:number) => (
         <div>
-            <div className={`hidden sm:block w-10 h-8 bwp-bg-light-green-500 px-3 py-2 ${i === 0 ? "rounded-l-full w-12 pl-5" : i === (items.length -1 ) ? "rounded-r-full w-12 pr-5" : "" }`}>
-                <span className="block w-4 h-4 m-auto bwp-bg-white rounded-full"></span>
+            <div className={`hidden sm:block w-10 h-8 bg-bwp-light-green bg-opacity-50 px-3 py-2 ${i === 0 ? "rounded-l-full w-12 pl-5" : i === (items.length -1 ) ? "rounded-r-full w-12 pr-5" : "" }`}>
+                <span className="block w-4 h-4 m-auto bg-bwp-white rounded-full"></span>
             </div>
-            <div className={`block sm:hidden w-8 h-6 bwp-bg-light-green-500 px-2.5 py-1.5 ${i === 0 ? "rounded-l-full w-10 pl-3" : i === (items.length -1 ) ? "rounded-r-full w-10 pr-3" : "" }`}>
-                <span className="block w-3 m-auto h-3 bwp-bg-white rounded-full"></span>
+            <div className={`block sm:hidden w-8 h-6 bg-bwp-light-green bg-opacity-50 px-2.5 py-1.5 ${i === 0 ? "rounded-l-full w-10 pl-3" : i === (items.length -1 ) ? "rounded-r-full w-10 pr-3" : "" }`}>
+                <span className="block w-3 m-auto h-3 bg-bwp-white rounded-full"></span>
             </div>
         </div>
     )
@@ -36,7 +36,7 @@ const BWPBannerSlider:React.FC<Props> = (props) => {
           {
               items.map((item:ItemProps,i:number) => {
                 return (<div key={`i${i}`}>
-                    <div className="bwp-rounded-base bg-cover bg-no-repeat bg-center aspect-w-16 aspect-h-9" style={{backgroundImage: `url(${item.image})`}}>
+                    <div className="rounded-base bg-cover bg-no-repeat bg-center aspect-w-16 aspect-h-9" style={{backgroundImage: `url(${item.image})`}}>
                     </div>
                   </div>)
               })
