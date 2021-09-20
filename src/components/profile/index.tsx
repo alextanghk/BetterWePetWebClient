@@ -103,14 +103,14 @@ const Profile:React.FC<MyProps> = ({children = null}) => {
                         </div>
                     </div>
                     <div className="bg-bwp-white w-full text-based leading-8 py-2 px-4 mt-4">
-                        <Link to="/" className="flex">
+                        <Link to="/my-profile/my-orders" className="flex">
                             <img src={IcoProductGreen} className={`w-7 h-auto flex-initial`} />
                             <span className="flex-auto px-2">{t("lb_order_histories")}</span>
                             <img src={IcoRightGrey} className={`w-7 h-auto flex-initial`} />
                         </Link>
                     </div>
                     <div className="bg-bwp-white w-full text-based leading-8 py-2 px-4">
-                        <Link to="/" className="flex">
+                        <Link to="/my-profile/delivery-addresses" className="flex">
                             <img src={IcoCarGreen} className={`w-7 h-auto flex-initial`} />
                             <span className="flex-auto px-2">{t("lb_delivery_address")}</span>
                             <img src={IcoRightGrey} className={`w-7 h-auto flex-initial`} />

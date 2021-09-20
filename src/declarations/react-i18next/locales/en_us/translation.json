@@ -71,5 +71,9 @@
     "lb_pet_birth":"出生日期",
     "lb_male":"男",
     "lb_female":"女",
-    "lb_delete":"刪除紀錄"
+    "lb_delete":"刪除紀錄",
+    "lb_default_address":"默認地址",
+    "lb_receiver":"收件人",
+    "lb_phone":"電話",
+    "lb_address":"地址"
 }

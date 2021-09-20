@@ -36,3 +36,10 @@
     display: block;
   }
 }
+
+$borderImg: url('./styles/assets/images/bg_address_whole.svg');
+
+.default-delivery {
+  border-image: $borderImg 10;
+  // border-image-repeat: round;
+}

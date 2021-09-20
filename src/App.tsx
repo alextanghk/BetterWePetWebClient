@@ -7,8 +7,8 @@ import Modal from "./components/modal";
 // Import Styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './App.scss';
 import './styles/index.scss';
+import './App.scss';
 
 // Import Project Elements
 import { BWPContext } from "./Context";

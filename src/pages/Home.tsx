@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
@@ -74,7 +74,7 @@ const DemoBlogItems = [
 
 const HomePage = () => {
     const { t } = useTranslation();
-
+    
     return(<>
         <Helmet>
             <title>{ t('lb_home')} | Better We Pet</title>

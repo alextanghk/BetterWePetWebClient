@@ -6,5 +6,6 @@ import BWPContainer from "./container";
 import BWPImgInput from "./image";
 import BWPSelect from "./selectbox";
 import BWPTextArea from "./textarea";
+import BWPSwiper from './swiper';
 
-export { BWPInput, BWPFlag, SignInBox, BWPSwitch, BWPContainer, BWPImgInput, BWPSelect, BWPTextArea }
+export { BWPInput, BWPFlag, SignInBox, BWPSwitch, BWPContainer, BWPImgInput, BWPSelect, BWPTextArea, BWPSwiper }

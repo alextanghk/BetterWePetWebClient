@@ -24,7 +24,7 @@ const ChangePasswordPage = () => {
         </Helmet>
         <Profile>
         <div className={`px-0`}>
-                <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white md:px-4 py-2">
+                <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white lg:px-4 py-2">
                     
                     <label className="text-bwp-green text-xl font-family-noto flex lg:justify-end justify-start items-center px-2 pt-2 lg:pb-2 lg:border-r border-solid border-bwp-grey bg-bwp-white">
                         {t("lb_old_password")}
@@ -61,7 +61,7 @@ const ChangePasswordPage = () => {
                     </div>
                 </div>
                 <button
-                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 my-2 leading-7 text-bwp-green active:bg-bwp-green active:text-bwp-white col-span-3"
+                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 my-2 leading-7 text-bwp-green active:bg-bwp-green active:text-bwp-white"
                     onClick={handleOnSave}
                 >
                     {t("lb_save")}

@@ -25,6 +25,9 @@ import UpdateProfilePage from "./pages/Profile/UpdateProfile"
 import ChangePasswordPage from "./pages/Profile/ChangePassword"
 import MyPetsPage from "./pages/Profile/MyPets"
 import PetEditPage from "./pages/Profile/PetDetails"
+import DeliveryAddressPage from "./pages/Profile/DeliveryAddress"
+import EditAddressPage from "./pages/Profile/EditAddress"
+import MyOrdersPage from "./pages/Profile/MyOrders"
 
 import MyFavoritePage from "./pages/MyFavorite";
 import MyCartPage from "./pages/MyCart";
@@ -71,11 +74,15 @@ function MyRoute() {
         { /* Users Page */}
         <Route exact path="/my-cart" component={MyCartPage}/>
         <Route exact path="/my-profile" component={MyProfilePage}/>
+        <Route exact path="/my-profile/my-orders" component={MyOrdersPage}/>
         <Route exact path="/my-profile/update-profile" component={UpdateProfilePage}/>
         <Route exact path="/my-profile/change-password" component={ChangePasswordPage}/>
         <Route exact path="/my-profile/pets" component={MyPetsPage}/>
         <Route exact path="/my-profile/pets/add" component={PetEditPage}/>
         <Route exact path="/my-profile/pets/:id" component={PetEditPage}/>
+        <Route exact path="/my-profile/delivery-addresses" component={DeliveryAddressPage}/>
+        <Route exact path="/my-profile/delivery-addresses/add" component={EditAddressPage}/>
+        <Route exact path="/my-profile/delivery-addresses/:id" component={EditAddressPage}/>
         
         <Route exact path="/my-favorite" component={MyFavoritePage}/>
         

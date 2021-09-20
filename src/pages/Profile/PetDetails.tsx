@@ -39,7 +39,7 @@ const PetEditPage = () => {
         </Helmet>
         <Profile>
         <div className={`px-0`}>
-                <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white md:px-4 py-2">
+                <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white lg:px-4 py-2">
                     <label className="text-bwp-green text-xl font-family-noto lg:justify-end justify-start items-center px-2 lg:border-r lg:flex hidden border-solid border-bwp-grey">
                         {t("lb_pet_picture")}
                     </label>
@@ -119,14 +119,14 @@ const PetEditPage = () => {
                     </div>
                 </div>
                 <button
-                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 mt-4 my-2 leading-7 text-bwp-green active:bg-bwp-light-green active:text-bwp-white col-span-3"
+                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 mt-4 my-2 leading-7 text-bwp-green active:bg-bwp-light-green active:text-bwp-white"
                     onClick={handleOnSave}
                 >
                     {t("lb_save")}
                 </button>
                 {
                     id != "" &&<button
-                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 my-2 leading-7 text-bwp-red active:bg-bwp-pink active:text-bwp-white col-span-3"
+                    className="bg-bwp-white w-full text-base h-10 px-3 py-0 my-2 leading-7 text-bwp-red active:bg-bwp-pink active:text-bwp-white"
                     onClick={handleOnSave}
                 >
                     <img src={IcoBinRed} className="w-6 h-6 inline-block" />{t("lb_delete")}
