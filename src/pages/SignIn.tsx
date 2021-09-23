@@ -3,7 +3,8 @@ import { withRouter } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
-import { SignInBox } from '../components/common';
+// import { SignInBox } from '../components/common';
+import SignInBox from '../sections/SignIn';
 
 const SignInPage = () => {
     const { t } = useTranslation();

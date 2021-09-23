@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Helmet, HelmetProvider  } from "react-helmet-async";
-import { SignInBox } from './components/common';
+import SignInBox from './sections/SignIn';
 import Modal from "./components/modal";
 
 // Import Styles

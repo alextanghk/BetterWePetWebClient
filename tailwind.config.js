@@ -278,6 +278,7 @@ module.exports = {
       1: '1 1 0%',
       auto: '1 1 auto',
       initial: '0 1 auto',
+      full: '0 1 100%',
       none: 'none',
     },
     flexGrow: {
