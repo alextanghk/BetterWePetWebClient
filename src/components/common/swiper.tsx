@@ -31,7 +31,7 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
             setWidth((ref.current as any).offsetWidth);
             console.log((ref.current as any).offsetWidth)
         }
-    },[])
+    },[window.innerWidth])
     useEffect(()=>{
         if (index !== current) {
             setCurrent(index);
@@ -54,6 +54,7 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     const [onSwipe, setOnSwipe] = useState<boolean>(false);
     const [startX, setStartX] = useState<number>(0)
     const [prevX, setPrevX] = useState<number>(0)
+    const [delta, setDelta] = useState<number>(0)
     const [velocity, setVelocity] = useState<number>(0)
     const [swipeTime, setSwipeTime] = useState<number>(0);
     
@@ -70,10 +71,17 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     const handleOnMove = (clientX:number) => {
         if (onSwipe) {
             // const v = clientX - startX;
-            const v = 20 * (clientX - startX) / (Date.now() - swipeTime)
-            const deltaX = clientX - prevX;
+            // const v = (clientX - startX) / (Date.now() - swipeTime)
+            const v = 20 * (clientX - prevX) / (Date.now() - swipeTime)
+            const deltaX = clientX - startX;
             // console.log(`ClientX: ${clientX}, StartX: ${startX}, Velocity: ${v}, DeltaX: ${deltaX}`)
-            if (Math.abs(v) >= (width/2)) {
+            
+            setVelocity(v);
+            setDelta(deltaX)
+            setPrevX(clientX);
+            setSwipeTime(Date.now());
+
+            if (Math.abs(deltaX) >= (width/2)) {
                 // Trigger Change Tab
                 const maxCount = React.Children.count(children);
                 if (deltaX > 0 && current > 0) {
@@ -84,28 +92,21 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
                     afterSwipe(current+1);
                     setCurrent(current+1);
                 }
-                
                 handleOnEnd();
-            }
-            else 
-            {
-                setVelocity(v);
-                setSwipeTime(Date.now());
-                setPrevX(clientX);
             }
         }
     }
 
     const handleOnEnd = () => {
+        setStartX(0);
+        setVelocity(0);
+        setDelta(0);
         if (onSwipe) {
-            setStartX(0);
-            setVelocity(0);
             setOnSwipe(false);
         }
     }
 
     const handleOnTouchStart = (e:TouchEvent) => {
-        e.preventDefault();
         handleOnSwipe(e.targetTouches[0].clientX);
     }
 
@@ -118,7 +119,6 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     }
 
     const handleOnMouseDown = (e:any) => {
-        e.preventDefault();
         handleOnSwipe(e.clientX)
     }
 
@@ -139,7 +139,7 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
             style={{
                 willChange: "transform",
                 height: `${height}px`,
-                transform: `translate(${(current*width*-1)+velocity}px, 0px)`
+                transform: `translateX(${(current*100*-1)}%) translateX(${velocity}px)`
             }}
             onTouchStart={handleOnTouchStart}
             onTouchMove={handleOnTouchMove}
