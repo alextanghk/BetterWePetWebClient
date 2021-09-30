@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createRef, TouchEvent } from 'react';
+import React, { useState, useEffect, useRef, createRef, TouchEvent, useLayoutEffect } from 'react';
 
 interface TagsProps extends React.HTMLProps<HTMLDivElement> {
     index: number,
@@ -29,16 +29,16 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     useEffect(()=> {
         if (ref && ref.current) {
             setWidth((ref.current as any).offsetWidth);
-            console.log((ref.current as any).offsetWidth)
         }
     },[window.innerWidth])
+
     useEffect(()=>{
         if (index !== current) {
             setCurrent(index);
         }
     },[index])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         // change height here
         if (dynamicHeight) {
             if (refs.current[current]) {
@@ -54,7 +54,6 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     const [onSwipe, setOnSwipe] = useState<boolean>(false);
     const [startX, setStartX] = useState<number>(0)
     const [prevX, setPrevX] = useState<number>(0)
-    const [delta, setDelta] = useState<number>(0)
     const [velocity, setVelocity] = useState<number>(0)
     const [swipeTime, setSwipeTime] = useState<number>(0);
     
@@ -70,20 +69,18 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
 
     const handleOnMove = (clientX:number) => {
         if (onSwipe) {
-            // const v = clientX - startX;
-            // const v = (clientX - startX) / (Date.now() - swipeTime)
             const v = 20 * (clientX - prevX) / (Date.now() - swipeTime)
             const deltaX = clientX - startX;
-            // console.log(`ClientX: ${clientX}, StartX: ${startX}, Velocity: ${v}, DeltaX: ${deltaX}`)
             
             setVelocity(v);
-            setDelta(deltaX)
             setPrevX(clientX);
             setSwipeTime(Date.now());
 
             if (Math.abs(deltaX) >= (width/2)) {
                 // Trigger Change Tab
                 const maxCount = React.Children.count(children);
+                console.log("Trigger Swipe Change");
+                console.log(`Current ${current}`)
                 if (deltaX > 0 && current > 0) {
                     afterSwipe(current-1);
                     setCurrent(current-1);
@@ -100,7 +97,6 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
     const handleOnEnd = () => {
         setStartX(0);
         setVelocity(0);
-        setDelta(0);
         if (onSwipe) {
             setOnSwipe(false);
         }
@@ -133,12 +129,15 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
         handleOnEnd();
     }
 
-    return (<div className={`overflow-hidden bg-bwp-white ${className}`} {...rest}>
+    return (<div className={`overflow-hidden ${className}`} {...rest}>
         <div className="flex flex-row flex-nowrap w-full transform transition-transform	" 
             ref={ref}
-            style={{
+            style={ dynamicHeight ? {
                 willChange: "transform",
                 height: `${height}px`,
+                transform: `translateX(${(current*100*-1)}%) translateX(${velocity}px)`
+            } : {
+                willChange: "transform",
                 transform: `translateX(${(current*100*-1)}%) translateX(${velocity}px)`
             }}
             onTouchStart={handleOnTouchStart}
@@ -151,7 +150,7 @@ const BWPSwiper:React.FC<TagsProps> & TabsComponents = (props) => {
         >
             {
                 children && React.Children.map(props.children,(child, i) => {
-                    return (<div className={`flex-shrink-0 w-full overflow-auto`} 
+                    return (<div className={`flex-shrink-0 w-full h-full overflow-auto`} 
                         ref={refs.current[i]}>{ child }</div>);
                 })
             }

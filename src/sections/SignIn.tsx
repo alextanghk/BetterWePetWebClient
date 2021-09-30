@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import TopImg from "../styles/assets/images/login/bg_login_top.png"
 import MiddleImg from "../styles/assets/images/login/bg_login_middle.png"
 import BottomImg from "../styles/assets/images/login/bg_login_bottom.png"
-import { BWPInput, BWPSwiper } from "../components/common";
+import { BWPInput, BWPSwiper, BWPButton } from "../components/common";
 import { BWPContext } from '../Context';
 
 import { IcoUserGreen, IcoUserWhite, IcoKeyGreen, IcoLoginWhite, IcoFacebook, IcoGmail, IcoInstagram, IcoMailGreen } from "../components/icons";
@@ -26,8 +26,8 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
 
     const { t } = useTranslation();
     const [tab, setTab] = useState<number>(0);
-    const [ token, setToken] = useState<string>("");
-    const { state, dispatch } = useContext(BWPContext);
+    // const [ token, setToken] = useState<string>("");
+    const { dispatch } = useContext(BWPContext);
     const [login,setLogin] = useState<BMPSignInProps>({
         account: "",
         password: "",
@@ -35,7 +35,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
         authType: "general",
     })
 
-    const handleOnLogin = (e:any) =>{
+    const handleOnLogin = () =>{
         dispatch({type: "LOADING", payload: { loading: true }});
         // Handle login function here
         console.log(login);
@@ -60,11 +60,11 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     <span className={`cursor-pointer ${tab === 1 ? "text-3xl text-bwp-light-green" : "text-xl"}`}>{t("lb_sign_up")}</span>
                                 </li>
                             </ul>
-                            <BWPSwiper index={tab}>
+                            <BWPSwiper index={tab} className="bg-bwp-white">
                                 <BWPSwiper.Tab className={`bg-bwp-white px-4 pb-6`}>
                                     <BWPInput
                                         icon={IcoUserGreen} value={login.account} 
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         onChange={(e:any)=>{ setLogin({...login, account: e.target.value }) }}
                                         placeholder={ `${t("lb_account")} / ${t("lb_email")}`}
                                     />
@@ -73,7 +73,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     </div>
                                     <BWPInput
                                         icon={IcoKeyGreen}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         type="password" value={login.password} 
                                         className="mt-4" onChange={(e:any)=>{ setLogin({...login, password: e.target.value }) }}
                                         placeholder={ `${t("lb_password")}`}
@@ -86,12 +86,14 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                             <span className="text-base">{t("lb_forgot_password")}？</span>
                                         </a>
                                     </div>
-                                    <button className="bwp-btn-green text-bwp-white text-2xl px-12 py-2 rounded-5 w-full mx-auto leading-9 mt-4"
+                                    <BWPButton
+                                        className="w-full mx-auto mt-4 "
+                                        size="lg"
                                         onClick={handleOnLogin}
                                     >
-                                        <img src={IcoLoginWhite} className="inline-block h-9 mr-2"/>
-                                        <span>{t("lb_sign_in")}</span>
-                                    </button>
+                                        <img src={IcoLoginWhite} className="inline-block h-8 mr-2 -mt-2"/>
+                                        <span className="text-bwp-white text-2xl ">{t("lb_sign_in")}</span>
+                                    </BWPButton>
                                     <div className="mt-5 bg-bwp-grey rounded-base py-2 w-full">
                                         <div className="flex px-3 py-2">
                                             <div className="text-base leading-10 pr-2">
@@ -106,7 +108,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                 <BWPSwiper.Tab className={`bg-bwp-white px-4 pb-6 overflow-x-hidden`}>
                                     <BWPInput
                                         icon={IcoUserGreen}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         placeholder={ `${t("lb_account")}`}
                                     />
                                     <div className="px-2">
@@ -114,7 +116,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     </div>
                                     <BWPInput
                                         icon={IcoMailGreen}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         type="email" className="mt-4"
                                         placeholder={ `${t("lb_email")}`}
                                     />
@@ -123,7 +125,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     </div>
                                     <BWPInput
                                         icon={IcoKeyGreen}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         type="password" className="mt-4"
                                         placeholder={ `${t("lb_password")}`}
                                     />
@@ -132,7 +134,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     </div>
                                     <BWPInput
                                         icon={IcoKeyGreen}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         type="password" className="mt-4"
                                         placeholder={ `${t("lb_confirm_password")}`}
                                     />
@@ -141,17 +143,20 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                             sitekey={process.env.REACT_APP_GOOGLE_RECAPTCHA || ""}
                                             onChange={(token)=>{
                                                 console.log(token);
-                                                setToken("");
+                                                // setToken("");
                                             }}
                                         />
                                     </div>
                                     <div className="px-2">
                                         <span className="text-bwp-red text-base"></span>
                                     </div>
-                                    <button className="bwp-btn-green mt-4 text-bwp-white text-2xl px-12 py-2 rounded-5 w-full mx-auto leading-9">
-                                        <img src={IcoUserWhite} className="inline-block h-9 mr-2"/>
-                                        <span>{t("lb_create_account")}</span>
-                                    </button>
+                                    <BWPButton
+                                        className="w-full mx-auto mt-4 "
+                                        size="lg"
+                                    >
+                                        <img src={IcoUserWhite} className="inline-block h-8 mr-2 -mt-2"/>
+                                        <span className="text-bwp-white text-2xl ">{t("lb_create_account")}</span>
+                                    </BWPButton>
                                     <div className="mt-5 bg-bwp-grey rounded-base py-2 w-full">
                                         <div className="flex px-3 py-2">
                                             <div className="text-base leading-10 pr-2">
@@ -169,20 +174,26 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                     </div>
                                     <BWPInput
                                         icon={IcoMailGreen} className={`mt-2 mb-4 `}
-                                        large={true} textAlign="center"
+                                        inputSize="lg" textAlign="center"
                                         placeholder={ `${t("lb_email")}`}
                                     />
                                     <div className="px-2 w-full text-center ">
                                         <span className="text-base">{t("msg_reset_note")}</span>
                                     </div>
-                                    <button className="bwp-btn-green text-bwp-white mt-4 text-2xl px-12 py-2 rounded-5 w-full mx-auto leading-9 mt-2">
-                                        <img src={IcoLoginWhite} className="inline-block h-9 mr-2"/>
-                                        <span>{t("lb_sign_in")}</span>
-                                    </button>
-                                    <button className="bwp-btn-grey text-bwp-white mt-4 text-2xl px-12 py-2 rounded-5 w-full mx-auto leading-9 mt-2" onClick={() => {setTab(0)}}>
-                                        
-                                        <span>{t("lb_cancel")}</span>
-                                    </button>
+                                    <BWPButton
+                                        className="w-full mx-auto mt-4 "
+                                        size="lg"
+                                    >
+                                        <img src={IcoLoginWhite} className="inline-block h-8 mr-2 -mt-2"/>
+                                        <span className="text-bwp-white text-2xl ">{t("lb_sign_in")}</span>
+                                    </BWPButton>
+                                    <BWPButton
+                                        className="w-full mx-auto mt-4 "
+                                        size="lg" color="grey"
+                                        onClick={() => {setTab(0)}}
+                                    >
+                                        <span className="text-bwp-white text-2xl ">{t("lb_cancel")}</span>
+                                    </BWPButton>
                                 </BWPSwiper.Tab>
                             </BWPSwiper>
                             

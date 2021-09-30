@@ -1,6 +1,7 @@
 import React,{ useRef } from 'react';
 import { clickOutsideAlerter } from "../../helpers";
 import { IcoClose } from "../icons";
+import PopLine from "../../styles/assets/images/popup/popup_line@3x.png";
 
 interface MyProps {
     children?: React.ReactNode,
@@ -11,7 +12,27 @@ interface MyProps {
     allowBackdropClose?: boolean
 }
 
-const Modal:React.FC<MyProps> = ({
+interface ModalComponents {
+    Head: React.FC<React.HTMLProps<HTMLDivElement>>;
+    Body: React.FC<React.HTMLProps<HTMLDivElement>>;
+}
+
+const Head:React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
+    const { className = "", children, ...rest} = props;
+    return (<div className={`w-full relative rounded-t-2 mb-9 bg-white px-4 pt-4 pb-2`}>
+        <div className={` ${className}`} {...rest}>{children}</div>
+        <img src={PopLine} className={`absolute w-full h-9 left-0 -bottom-9`} />
+    </div>);
+}
+
+const Body:React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
+    const { className = "", children, ...rest} = props;
+    return (<div className={`w-full rounded-b-2 bg-white p-4`}>
+        <div className={` ${className}`} {...rest}>{children}</div>
+    </div>);
+}
+
+const Modal:React.FC<MyProps> & ModalComponents = ({
     onClose = ()=>void(0),
     open = false,
     children = null,
@@ -41,4 +62,8 @@ const Modal:React.FC<MyProps> = ({
     </div>
     </>) : null
 }
+
+Modal.Head = Head
+Modal.Body = Body
+
 export default Modal;

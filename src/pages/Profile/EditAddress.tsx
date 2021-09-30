@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
-import Profile from "../../components/profile";
+import Profile from "../../sections/Profile";
 import { BWPSwitch, BWPInput, BWPTextArea } from "../../components/common";
 import { IcoBinRed, IcoUserGreen, IcoPhoneGreen, IcoLocationGreen, IcoFlag } from "../../components/icons";
 
@@ -24,7 +24,7 @@ const EditAddressPage = () => {
         species: ""
     });
 
-    const handleOnSave = (e:any) => {
+    const handleOnSave = () => {
         console.log(value);
     }
 
@@ -33,7 +33,8 @@ const EditAddressPage = () => {
             <title>{ t('lb_my_pets')} | Better We Pet</title>
         </Helmet>
         <Profile>
-        <div className={`px-0`}>
+            <Profile.Body>
+            <div className={`px-0`}>
                 <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white lg:px-4 py-2">
                     <label className="text-bwp-green text-xl font-family-noto lg:flex hidden justify-end items-center px-2 pt-2 lg:pb-2 lg:border-r border-solid border-bwp-grey bg-bwp-white">
                         {t("lb_receiver")}
@@ -42,7 +43,7 @@ const EditAddressPage = () => {
                         <div className="flex">
                             <img src={IcoUserGreen} className="h-10 flex-initial mt-3 mx-2 lg:hidden block"/>
                             <BWPInput
-                                large={true}
+                                inputSize="lg"
                                 onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                                 type="text" className="my-2"
                                 placeholder={ `${t("lb_receiver")}`}
@@ -56,7 +57,7 @@ const EditAddressPage = () => {
                         <div className="flex">
                             <img src={IcoPhoneGreen} className="h-10 flex-initial mt-3 mx-2 lg:hidden block"/>
                             <BWPInput
-                                large={true}
+                                inputSize="lg"
                                 onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                                 type="text" className="my-2"
                                 placeholder={ `${t("lb_phone")}`}
@@ -70,7 +71,7 @@ const EditAddressPage = () => {
                         <div className="flex">
                             <img src={IcoLocationGreen} className="h-10 flex-initial mt-3 mx-2 lg:hidden block"/>
                             <BWPTextArea
-                                large={true} rows={5}
+                                inputSize="lg" rows={5}
                                 onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                                 type="date" className="my-2"
                                 placeholder={ `${t("lb_address")}`}
@@ -103,6 +104,7 @@ const EditAddressPage = () => {
                 </button>
                 }
             </div>
+            </Profile.Body>
         </Profile>
     </>)
 }

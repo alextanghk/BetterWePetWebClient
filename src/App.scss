@@ -1,8 +1,7 @@
 @import 'styles/_main';
 
-* {
+html, body {
   font-family: "Seto", "Uzura", 'Noto Sans TC', 'Noto Sans HK', "Indie Flower";
-  box-sizing: border-box;
 }
 
 .bwp-body {
@@ -42,4 +41,50 @@ $borderImg: url('./styles/assets/images/bg_address_whole.svg');
 .default-delivery {
   border-image: $borderImg 10;
   // border-image-repeat: round;
+}
+
+.bwp-switch-tabs {
+  &.actived {
+    span {
+      color: $color-white !important;
+    }
+  }
+}
+
+.bwp-green-slick-dots {
+  margin: 0;
+  padding: 0;
+  bottom: 20px;
+  > li {
+      margin: 0 !important;
+      padding: 0 !important;
+      height: auto;
+      width: auto;
+
+      &.slick-active {
+          span {
+              background-color: $color-red;
+          }
+      }
+  }
+}
+
+.bwp-img-slick-dots {
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  position: relative;
+  text-align: left;
+  > li {
+    height: auto;
+    width: auto;
+    border: 2px solid rgba(0,0,0,0);
+    
+    &:first-child {
+      margin-left: 0;
+    }
+    &.slick-active {
+      border: 2px solid $color-green;
+    }
+  }
 }

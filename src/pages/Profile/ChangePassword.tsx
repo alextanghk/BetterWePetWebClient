@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
-import Profile from "../../components/profile";
+import Profile from "../../sections/Profile";
 import { BWPInput } from "../../components/common"; 
 
 const ChangePasswordPage = () => {
@@ -14,7 +14,7 @@ const ChangePasswordPage = () => {
         confirm:""
     })
 
-    const handleOnSave = (e:any) => {
+    const handleOnSave = () => {
         console.log(value);
     }
 
@@ -23,6 +23,7 @@ const ChangePasswordPage = () => {
             <title>{ t('lb_change_password')} | Better We Pet</title>
         </Helmet>
         <Profile>
+            <Profile.Body>
         <div className={`px-0`}>
                 <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white lg:px-4 py-2">
                     
@@ -31,7 +32,7 @@ const ChangePasswordPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, oldPassword: e.target.value }) }}
                             type="password" className="my-2"
                             placeholder={ `${t("lb_old_password")}`}
@@ -42,7 +43,7 @@ const ChangePasswordPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, newPassword: e.target.value }) }}
                             type="password" className="my-2"
                             placeholder={ `${t("lb_new_password")}`}
@@ -53,7 +54,7 @@ const ChangePasswordPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, confirm: e.target.value }) }}
                             type="password" className="my-2"
                             placeholder={ `${t("lb_confirm_password")}`}
@@ -67,6 +68,7 @@ const ChangePasswordPage = () => {
                     {t("lb_save")}
                 </button>
             </div>
+            </Profile.Body>
         </Profile>
     </>)
 }

@@ -4,12 +4,8 @@ import { Link } from 'react-router-dom';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
 
-import { IcoUserGreen, IcoPasswordLockedGreen, IcoFootprintFullGreen, IcoCarGreen, IcoProductGreen, IcoBellGreen, IcoLogoutWhite, IcoRightGrey } from "../components/icons";
-import Profile from "../components/profile";
-
-import Dog from "../styles/assets/demo/random5-5.jpg";
-import Cat from "../styles/assets/demo/FRS100927.jpg";
-import Bird from "../styles/assets/demo/1820487.jpg";
+import { IcoRightGrey } from "../components/icons";
+import Profile from "../sections/Profile";
 
 const MyProfilePage = () => {
     const { t } = useTranslation();
@@ -19,6 +15,7 @@ const MyProfilePage = () => {
             <title>{ t('lb_my_profile')} | Better We Pet</title>
         </Helmet>
         <Profile>
+            <Profile.Body>
             <div className={`bg-bwp-white px-4 p-2`}>
                 <div className="grid grid-cols-1">
                     <div className="flex">
@@ -30,6 +27,7 @@ const MyProfilePage = () => {
                     </div>
                 </div>
             </div>
+            </Profile.Body>
         </Profile>
     </>)
 }

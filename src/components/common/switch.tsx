@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 interface BWPInputProps extends React.HTMLProps<HTMLInputElement> {
     color?: string,
     // defaultChecked?: boolean,
@@ -14,7 +14,7 @@ const BWPSwitch:React.FC<BWPInputProps> = (props) => {
     const circleClass = "p-2 rounded-4 w-4 ";
     const blockClass = "rounded-6 h-6 w-10 p-1";
 
-    const handleOnClick = (e:any) => {
+    const handleOnClick = () => {
         if (ref !== null && ref.current !== null) {
             const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "checked");
             if (nativeInputValueSetter !== undefined) {

@@ -25,7 +25,14 @@ const Foot:React.FC<React.HTMLProps<HTMLDivElement>> = ({
     children = null,
     className = ""
 }) => {
-    return (<div className={`px-3 pt-2 pb-1 flex h-12 w-full border-bwp-light-grey border-t border-solid relative ${className}`}>{children}</div>)
+    const classNames = className.split(" ");
+    if (classNames.findIndex(v => v.startsWith("border-bwp-")) < 0) {
+        classNames.push("border-bwp-light-grey")
+    }
+    if (classNames.findIndex(v => v.startsWith("border-t")) < 0) {
+        classNames.push("border-t")
+    }
+    return (<div className={`px-3 pt-2 pb-1 flex h-12 w-full border-solid relative ${classNames.join(" ")}`}>{children}</div>)
 }
 
 interface MenuSubComponents {

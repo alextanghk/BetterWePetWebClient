@@ -778,6 +778,8 @@ module.exports = {
     },
     transitionProperty: {
       none: 'none',
+      height: 'height',
+      'max-height': 'max-height',
       all: 'all',
       DEFAULT:
         'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',

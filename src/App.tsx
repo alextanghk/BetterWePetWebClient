@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Helmet, HelmetProvider  } from "react-helmet-async";
 import SignInBox from './sections/SignIn';
@@ -44,16 +44,24 @@ const reducer = (state: any, action: any)=>{
         user: null
       }
       break;
+    case "UPDATE_SHOPPING_CART": 
+      return {
+        ...state,
+        shoppingCart: action.payload.shoppingCart
+      }
+      break;
     default: return state; break;
   }
 }
 function App() {
 
   const [state, dispatch] = React.useReducer(reducer, {
-    isAuthenticated: false, token: "", user: null, loading: false, onLogin: false
+    isAuthenticated: false, token: "", user: null, loading: false, onLogin: false, shoppingCart: []
   });
 
   useEffect(()=>{
+
+    // Init
     if (
       localStorage.getItem("isAuthenticated") === "true"
     ) {
@@ -63,6 +71,16 @@ function App() {
       setTimeout(()=>{
           dispatch({type: "LOGIN_SUCCCESS", payload: { accessToken: "1234596" }});
       }, 1000)
+    }
+
+    if (
+      localStorage.getItem("shoppingCart") !== null
+      && localStorage.getItem("shoppingCart") !== undefined
+      && localStorage.getItem("shoppingCart") !== ""
+    ) {
+      const itemStr = localStorage.getItem("shoppingCart");
+      const items = itemStr ? JSON.parse(itemStr) : [];
+      dispatch({type: "UPDATE_SHOPPING_CART", payload: { items: items }});
     }
   },[])
 

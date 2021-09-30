@@ -3,14 +3,9 @@ import { withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
-import Profile from "../../components/profile";
+import Profile from "../../sections/Profile";
 import { BWPSelect, BWPImgInput, BWPInput, BWPTextArea } from "../../components/common";
-import { IcoFemale, IcoBinRed, IcoFootprintFullWhite } from "../../components/icons";
-
-// Demo only
-import Dog from "../../styles/assets/demo/random5-5.jpg";
-import Cat from "../../styles/assets/demo/FRS100927.jpg";
-import Bird from "../../styles/assets/demo/1820487.jpg";
+import { IcoBinRed, IcoFootprintFullWhite } from "../../components/icons";
 
 type QuizParams = {
     id: string;
@@ -29,7 +24,7 @@ const PetEditPage = () => {
         species: ""
     });
 
-    const handleOnSave = (e:any) => {
+    const handleOnSave = () => {
         console.log(value);
     }
 
@@ -38,13 +33,14 @@ const PetEditPage = () => {
             <title>{ t('lb_my_pets')} | Better We Pet</title>
         </Helmet>
         <Profile>
-        <div className={`px-0`}>
+            <Profile.Body>
+            <div className={`px-0`}>
                 <div className="grid lg:grid-cols-3 grid-cols-1 lg:bg-bwp-white lg:px-4 py-2">
                     <label className="text-bwp-green text-xl font-family-noto lg:justify-end justify-start items-center px-2 lg:border-r lg:flex hidden border-solid border-bwp-grey">
                         {t("lb_pet_picture")}
                     </label>
                     <div className="p-2 mb-4 md:mb-0 md:col-span-2">
-                        <BWPImgInput large={true} className="mx-auto w-min" allowEdit
+                        <BWPImgInput imgSize={"lg"} className="mx-auto w-min" allowEdit
                             imgPlaceholder={IcoFootprintFullWhite}
                             onChange={(e:any)=>{ setValue({ ...value, profile: e.target.files[0] }) }}
                         />
@@ -54,7 +50,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                             type="text" className="my-2"
                             placeholder={ `${t("lb_pet_name")}`}
@@ -65,7 +61,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPSelect
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, email: e.target.value }) }}
                             className="my-2"
                         >
@@ -78,7 +74,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                             type="date" className="my-2"
                             placeholder={ `${t("lb_pet_birth")}`}
@@ -89,7 +85,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                             type="text" className="my-2"
                             placeholder={ `${t("lb_pet_species")}`}
@@ -100,7 +96,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPInput
-                            large={true}
+                            inputSize="lg"
                             onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                             type="text" className="my-2"
                             placeholder={ `${t("lb_pet_size")}`}
@@ -111,7 +107,7 @@ const PetEditPage = () => {
                     </label>
                     <div className="p-2 md:col-span-2 bg-bwp-white">
                         <BWPTextArea
-                            large={true} rows={5}
+                            inputSize="lg" rows={5}
                             onChange={(e:any)=>{ setValue({ ...value, name: e.target.value }) }}
                             type="date" className="my-2"
                             placeholder={ `${t("lb_other_info")}`}
@@ -133,6 +129,7 @@ const PetEditPage = () => {
                 </button>
                 }
             </div>
+            </Profile.Body>
         </Profile>
     </>)
 }

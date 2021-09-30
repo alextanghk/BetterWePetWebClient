@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { IcoClose } from "../icons";
+import { BWPTypeSize } from "../../Types";
 
 interface BWPInputProps extends React.HTMLProps<HTMLSelectElement> {
     icon?: any,
     color?: string,
-    large?: boolean,
+    inputSize?: BWPTypeSize,
     textAlign?: "left" | "center" | "right",
     onIconClick?: (e:any) => void
 } 
@@ -12,7 +13,7 @@ interface BWPInputProps extends React.HTMLProps<HTMLSelectElement> {
 const BWPSelect:React.FC<BWPInputProps> = (props) => {
     
     const { icon, className ="", color = "bg-bwp-grey", 
-        large = false,
+        inputSize = "md",
         textAlign = "left",
         onIconClick = null, 
         onChange=(e:any)=>void(0),
@@ -20,8 +21,12 @@ const BWPSelect:React.FC<BWPInputProps> = (props) => {
         ...rest} = props;
     const ref = useRef<HTMLSelectElement>(null);
     
-    const inputClass = large ? `text-2xl ${icon ? "px-12" : "pl-4 pr-12"} py-2 rounded-5` : `text-xs rounded-base py-2 ${icon ? "px-8" : "pl-2 pr-8"}`
-    const defIconClass = "";
+    const sizeConfig = {
+        xs: { input: `text-xs rounded-base py-2 ${icon ? "px-8" : "pl-2 pr-8"}`},
+        sm: { input: `text-xs rounded-base py-2 ${icon ? "px-8" : "pl-2 pr-8"}`},
+        md: { input: `text-xs rounded-base py-2 ${icon ? "px-8" : "pl-2 pr-8"}`},
+        lg: { input: `text-2xl ${icon ? "px-12" : "pl-4 pr-12"} py-2 rounded-5`}
+    }
 
     return (<>
         <div className={` ${className}`}>
@@ -31,7 +36,7 @@ const BWPSelect:React.FC<BWPInputProps> = (props) => {
                 /> }
                 <select ref={ref } 
                     className={
-                        `w-auto appearance-none bwp-select max-w-full w-full font-family-noto ${color} ${inputClass} text-${textAlign}`
+                        `w-auto appearance-none bwp-select max-w-full w-full font-family-noto ${color} ${sizeConfig[inputSize].input} text-${textAlign}`
                     } 
                     {...rest} 
                 >

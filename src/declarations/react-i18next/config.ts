@@ -13,6 +13,6 @@ export const resources = {
   } as const;
   
   i18n.use(initReactI18next).init({
-    lng: 'zh_hk',
+    lng: window.localStorage.defaultLanguage || 'zh_hk',
     resources,
   });

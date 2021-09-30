@@ -1,5 +1,8 @@
 {
     "colors": {
+        "bwp-light-grey":"#F7F6F2",
+        "bwp-grey":"#E8E4D6",
+        "bwp-dark-grey":"#5D5D5D",
         "bwp-white":"#FBFDFB",
         "bwp-yellow":"#FDD400",
         "bwp-light-green":"#00BA74",
@@ -7,9 +10,7 @@
         "bwp-pink":"#FDAD9B",
         "bwp-red":"#FF6262",
         "bwp-blue":"#344A94",
-        "bwp-khaki":"#F0C57A",
-        "bwp-light-grey":"#F7F6F2",
-        "bwp-grey":"#E8E4D6",
-        "bwp-dark-grey":"#5D5D5D"
+        "bwp-dark-blue":"#24387b",
+        "bwp-khaki":"#F0C57A"
     }
 }

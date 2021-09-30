@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation } from 'react-i18next';
-import Profile from "../../components/profile";
-import { BWPContainer, BWPImgInput } from "../../components/common";
-import { IcoFlagWhite, IcoMale } from "../../components/icons";
-
-// Demo only
-import Dog from "../../styles/assets/demo/random5-5.jpg";
-import Cat from "../../styles/assets/demo/FRS100927.jpg";
-import Bird from "../../styles/assets/demo/1820487.jpg";
+import Profile from "../../sections/Profile";
+import { BWPContainer } from "../../components/common";
+import { IcoFlagWhite } from "../../components/icons";
 
 const DeliveryAddressPage = () => {
     const { t } = useTranslation();
@@ -20,8 +15,9 @@ const DeliveryAddressPage = () => {
             <title>{ t('lb_my_pets')} | Better We Pet</title>
         </Helmet>
         <Profile>
+            <Profile.Body>
             <div className={`py-2 grid lg:grid-cols-2 grid-cols-1 lg:px-4 px-0`}>
-                <Link to={"/my-profile/delivery-addresses/1"} className="mb-4">
+                <Link to={"/my-profile/delivery-addresses/edit/1"} className="mb-4">
                     <BWPContainer className="border-8 border-solid border-bwp-white bg-bwp-white default-delivery lg:mx-2 lg:rounded-base">
                         <BWPContainer.Body className="grid grid-cols-1 px-2 border-bwp-light-grey border-t border-solid">
                             <label className="absolute top-2 right-2 rounded-6 py-1 px-2 bg-bwp-light-green text-bwp-white w-max text-sm"><img src={IcoFlagWhite} className="w-4 h-4 inline-block"/>{t("lb_default_address")}</label>
@@ -33,7 +29,7 @@ const DeliveryAddressPage = () => {
                         </BWPContainer.Body>
                     </BWPContainer>
                 </Link>
-                <Link to={"/my-profile/delivery-addresses/1"} className="mb-4">
+                <Link to={"/my-profile/delivery-addresses/edit/1"} className="mb-4">
                     <BWPContainer className="border-8 border-solid border-bwp-white bg-bwp-white lg:mx-2 lg:rounded-base">
                         <BWPContainer.Body className="grid grid-cols-1 px-2 border-bwp-light-grey border-t border-solid">
                             <span className="font-family-noto font-semibold text-base text-bwp-blue">Kitty Tan</span>
@@ -45,6 +41,7 @@ const DeliveryAddressPage = () => {
                     </BWPContainer>
                 </Link>
             </div>
+            </Profile.Body>
         </Profile>
     </>)
 }
