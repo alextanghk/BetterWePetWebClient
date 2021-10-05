@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { withRouter } from 'react-router';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation, Trans } from 'react-i18next';
-import { BWPInput, BWPImgInput, BWPTags, BWPCollapse, BWPButton } from "../../components/common";
+import { BWPInput, BWPImgInput, BWPTags, BWPCollapse, BWPButton, BWPBreadCrumb } from "../../components/common";
 import { Link } from 'react-router-dom';
 import { IcoRightGrey, IcoLikeGrey, IcoLikeGreen, IcoFavWhite, IcoFavPink, IcoFavFilled,IcoClose, IcoHomeWhite, IcoShare, IcoChatWhite, IcoCartWhite, IcoCarrotGrey, IcoCarrotFilled } from "../../components/icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -70,11 +70,9 @@ const ProductDetailPage = () => {
         <Helmet>
             <title>{ t('lb_services')} | Better We Pet</title>
         </Helmet>
-        <div className=" my-4 leading-6 lg:flex hidden">
-            <Link to="/">{t("lb_home")}</Link>
-            <img src={IcoRightGrey} className="w-4 h-4 my-1 mx-2" />
+        <BWPBreadCrumb className="md:block hidden">
             <Link to="/">{t("lb_products")}</Link>
-        </div>
+        </BWPBreadCrumb>
         <div className="flex md:mt-6 lg:flex-row flex-col w-full">
             <div className="lg:flex-initial flex-auto lg:w-1/3 w-full">
                 <div className="bwp-slider relative">
@@ -123,13 +121,13 @@ const ProductDetailPage = () => {
                         link="#"
                         className="md:row-start-auto row-start-1 md:justify-start justify-center"
                     />
-                    <div className="flex">
+                    {/* <div className="flex">
                         <img src={IcoCarrotFilled} className="w-6 flex-initial"/>
                         <img src={IcoCarrotFilled} className="w-6 flex-initial" />
                         <img src={IcoCarrotFilled} className="w-6 flex-initial" />
                         <img src={IcoCarrotGrey} className="w-6 flex-initial" />
                         <img src={IcoCarrotGrey} className="w-6 flex-initial" />
-                    </div>
+                    </div> */}
                     
                     <div className="md:hidden flex mt-2 justify-center w-full bg-bwp-white border-t border-b border-solid border-bwp-grey">
                         <div className="flex-auto px-4 text-center border-r border-solid border-bwp-grey my-1">

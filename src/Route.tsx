@@ -33,6 +33,8 @@ import OrderDetail from "./pages/Profile/OrderDetail";
 
 // Purchase
 import ProductDetailPage from "./pages/Purchase/ProductDetail";
+import ShoppingCartPage from "./pages/Purchase/ShoppingCart"
+import PreOrderPage from "./pages/Purchase/PreOrder";
 
 import MyFavoritePage from "./pages/MyFavorite";
 import MyCartPage from "./pages/MyCart";
@@ -91,6 +93,8 @@ function MyRoute() {
         <Route exact path="/my-profile/delivery-addresses/add" component={EditAddressPage}/>
         <Route exact path="/my-profile/delivery-addresses/edit/:id" component={EditAddressPage}/>
         <Route exact path="/my-profile/my-orders/detail/:id" component={OrderDetail}/>
+        <Route exact path="/purchase/shopping-cart" component={ShoppingCartPage} />
+        <Route exact path="/purchase/pre-order" component={PreOrderPage} />
         
         <Route exact path="/my-favorite" component={MyFavoritePage}/>
         

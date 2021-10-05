@@ -12,7 +12,6 @@ import Bird from "../styles/assets/demo/1820487.jpg";
 import Slider from "react-slick";
 
 interface ProfileMenuProps extends React.HTMLProps<HTMLDivElement> {
-    children?: React.ReactNode,
     __TYPE?: string
 }
 
