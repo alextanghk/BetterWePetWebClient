@@ -138,7 +138,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                         type="password" className="mt-4"
                                         placeholder={ `${t("lb_confirm_password")}`}
                                     />
-                                    <div className="text-center px-0 xs:px-2 pt-4">
+                                    {/* <div className="text-center px-0 xs:px-2 pt-4">
                                         <ReCAPTCHA
                                             sitekey={process.env.REACT_APP_GOOGLE_RECAPTCHA || ""}
                                             onChange={(token)=>{
@@ -146,7 +146,7 @@ const SignInBox:React.FC<MyProps> = ({ className = "", afterLogin=()=>void(0)}) 
                                                 // setToken("");
                                             }}
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="px-2">
                                         <span className="text-bwp-red text-base"></span>
                                     </div>

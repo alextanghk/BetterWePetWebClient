@@ -5,8 +5,33 @@ import { useTranslation } from 'react-i18next';
 import BWPMerchant from '../../components/merchants';
 import { BWPBreadCrumb, BWPCheckbox, BWPImgInput } from '../../components/common';
 import { Link } from 'react-router-dom';
+import { IcoPlus, IcoBinRed, IcoMinus } from '../../components/icons';
+import { BWPTypeSize } from "../../Types";
 // Demo Only
 import Cat from '../../styles/assets/demo/FRS100927.jpg'
+
+interface QtyControlProps extends React.HTMLProps<HTMLInputElement> {
+    inputSize?: BWPTypeSize,
+}
+
+const QtyControl:React.FC<QtyControlProps> = (props) => {
+    const { className, inputSize = "md", ...rest } = props
+
+    const sizeConfig = {
+        xs : { img:"", input:"" },
+        sm : { img:"", input:"" },
+        md : { img:"", input:"" },
+        lg : { img:"", input:"" },
+    }
+
+    return (<div className={ `${className}` }>
+        <div className={` relative flex flex-col`}>
+            <img src={IcoPlus} className={`${sizeConfig[inputSize].img}`}/>
+            <input className={`${sizeConfig[inputSize].input}`} {...rest}/>
+            <img src={IcoMinus}  className={`${sizeConfig[inputSize].img}`}/>
+        </div>
+    </div>)
+}
 
 const ShoppingCartPage = () => {
     const { t } = useTranslation();
@@ -49,7 +74,7 @@ const ShoppingCartPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div>Control</div>
+                    <div><QtyControl /></div>
                 </div>
             </div>
             <div className={`md:w-1/3`}>

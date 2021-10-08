@@ -28,7 +28,7 @@ function Header() {
 
   return (<header className="bg-bwp-light-green shadow flex flex-row w-full h-14 sm:px-0 px-3 z-40">
         <div className="flex-initial hidden md:block p-2">
-          <Link to="/"><img src={Logo} className="h-full" alt="fireSpot"/></Link>
+          <Link to="/"><img src={Logo} className="h-full inline-block" alt="fireSpot"/></Link>
         </div>
         <div className="py-3 sm:px-2 px-0 sm:flex-initial flex-auto">
           <BWPInput icon={IcoSearchGrey} 
@@ -123,6 +123,7 @@ const UserMenu = () => {
         }
         { 
           !state.isAuthenticated && <a href="#" onClick={(e:any)=>{
+              e.preventDefault()
               setOpen(false)
               dispatch({ type:"ON_LOGIN",payload: { onLogin: true }})
             }} className="px-4 py-2 border-solid border-t border-bwp-grey">
