@@ -88,3 +88,14 @@ $borderImg: url('./styles/assets/images/bg_address_whole.svg');
     }
   }
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

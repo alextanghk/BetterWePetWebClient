@@ -39,7 +39,8 @@ const BWPTextArea:React.FC<BWPInputProps> = (props) => {
         xs: { input: `text-xs rounded-base py-2 ${icon ? "pl-8" : "pl-2"}`, value: "pr-8"},
         sm: { input: `text-xs rounded-base py-2 ${icon ? "pl-8" : "pl-2"}`, value: "pr-8"},
         md: { input: `text-xs rounded-base py-2 ${icon ? "pl-8" : "pl-2"}`, value: "pr-8"},
-        lg: { input: `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5`, value: "pr-12"}
+        lg: { input: `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5`, value: "pr-12"},
+        xl: { input: `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5`, value: "pr-12"},
     }
 
     return (<>

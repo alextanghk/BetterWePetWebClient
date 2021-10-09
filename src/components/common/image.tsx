@@ -36,6 +36,12 @@ const BWPImgInput:React.FC<MyProps> = (props) => {
             btnTextSize: `text-sm`
         },
         lg: {
+            imageSize : `w-20 h-20  ${shape === "circle" ? "rounded-20": "rounded-4"}`,
+            btnSize: `rounded-4 py-1 pl-1 pr-2`,
+            btnImgSize: `w-6 h-6`,
+            btnTextSize: `text-based`
+        },
+        xl: {
             imageSize : `w-28 h-28  ${shape === "circle" ? "rounded-28": "rounded-4"}`,
             btnSize: `rounded-4 py-1 pl-1 pr-2`,
             btnImgSize: `w-6 h-6`,

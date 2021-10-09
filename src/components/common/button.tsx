@@ -20,6 +20,7 @@ const BWPButton:React.FC<MyProps> = ({
         sm: `${!classNames.find(x => x.startsWith("h-")) && "h-10" } ${!classNames.find(x => x.startsWith("px-")) && "px-3" } rounded-5`,
         md: `${!classNames.find(x => x.startsWith("h-")) && "h-10" } ${!classNames.find(x => x.startsWith("px-")) && "px-3" } rounded-5`,
         lg: `${!classNames.find(x => x.startsWith("h-")) && "h-12" } ${!classNames.find(x => x.startsWith("px-")) && "px-12" } rounded-12`,
+        xl: `${!classNames.find(x => x.startsWith("h-")) && "h-12" } ${!classNames.find(x => x.startsWith("px-")) && "px-12" } rounded-12`,
     }
 
     return (<button

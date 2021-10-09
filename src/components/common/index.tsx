@@ -12,5 +12,6 @@ import BWPCollapse from "./collapse"
 import BWPButton from "./button"
 import BWPBreadCrumb from "./breadcrumb"
 import BWPCheckbox from './checkbox'
+import BWPNumber from './number'
 
-export { BWPInput, BWPFlag, BWPRadio as BWPSwitch, BWPContainer, BWPImgInput, BWPSelect, BWPTextArea, BWPSwiper, BWPSwitchTabs, BWPTags, BWPCollapse, BWPButton, BWPBreadCrumb, BWPCheckbox }
+export { BWPNumber, BWPInput, BWPFlag, BWPRadio as BWPSwitch, BWPContainer, BWPImgInput, BWPSelect, BWPTextArea, BWPSwiper, BWPSwitchTabs, BWPTags, BWPCollapse, BWPButton, BWPBreadCrumb, BWPCheckbox }

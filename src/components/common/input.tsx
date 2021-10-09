@@ -63,6 +63,10 @@ const BWPInput:React.FC<BWPInputProps> = ({
         lg: {
             input: `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5`,
             value: `pr-12`
+        },
+        xl: {
+            input: `text-2xl ${icon ? "pl-12" : "pl-4"} py-2 rounded-5`,
+            value: `pr-12`
         }
     }
 

@@ -105,5 +105,7 @@
     "lb_add_cart":"加入購物車",
     "lb_browser_shop":"瀏覽商戶",
     "lb_number":"數量",
-    "lb_purchase":"購買此商品"
+    "lb_purchase":"購買此商品",
+    "lb_product_size":"尺寸",
+    "lb_product_color":"顏色"
 }

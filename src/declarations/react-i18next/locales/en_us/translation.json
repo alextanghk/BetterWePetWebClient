@@ -104,6 +104,8 @@
     "lb_delivery": "Delivery",
     "lb_add_cart":"Add to cart",
     "lb_browser_shop":"Visit Merchant",
-    "lb_number":"數量",
-    "lb_purchase":"Purchase"
+    "lb_number":"Qty",
+    "lb_purchase":"Purchase",
+    "lb_product_size":"Size",
+    "lb_product_color":"Color"
 }

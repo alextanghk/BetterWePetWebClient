@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { withRouter } from 'react-router';
 import { Helmet  } from "react-helmet-async";
 import { useTranslation, Trans } from 'react-i18next';
-import { BWPInput, BWPImgInput, BWPTags, BWPCollapse, BWPButton, BWPBreadCrumb } from "../../components/common";
+import { BWPInput, BWPImgInput, BWPTags, BWPCollapse, BWPButton, BWPBreadCrumb, BWPSelect, BWPNumber } from "../../components/common";
 import { Link } from 'react-router-dom';
 import { IcoRightGrey, IcoLikeGrey, IcoLikeGreen, IcoFavWhite, IcoFavPink, IcoFavFilled,IcoClose, IcoHomeWhite, IcoShare, IcoChatWhite, IcoCartWhite, IcoCarrotGrey, IcoCarrotFilled } from "../../components/icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -174,7 +174,7 @@ const ProductDetailPage = () => {
                             Testing<br />
                         </p>
                     </BWPCollapse>
-                    <div className="md:relative z-20 fixed left-0 md:bottom-0 bottom-14 md:row-start-3 md:col-span-2">
+                    <div className="md:relative w-screen md:w-auto z-20 fixed left-0 md:bottom-0 bottom-14 md:row-start-3 md:col-span-2">
                         <div className={`rounded-t-4 md:shadow-none shadow md:bg-transparent bg-bwp-white pb-4 md:px-0 px-4 relative md:pt-0 pt-10 ${open ? "block" : "hidden md:block"}`}>
                             <img src={IcoClose} className="w-6 h-6 md:hidden absolute top-2 right-2 cursor-pointer" onClick={()=>{setOpen(false)}}/>
                             <div className="flex">
@@ -188,19 +188,32 @@ const ProductDetailPage = () => {
                                     >
                                         <span className="font-family-noto font-semibold">{t("lb_stock")}</span>
                                         <span className="font-family-noto">12</span>
-                                        <span className="font-family-noto font-semibold">{t("lb_pet_size")}</span><span className="font-family-noto">30cm x 20cm</span>
                                         <span className="font-family-noto font-semibold">{t("lb_made_in")}</span><span className="font-family-noto">Hong Kong</span>
                                         
                                     </div>
                                 </div>
                             </div>
-                            <div className="grid md:gap-3 pt-3"
+                            <div className="grid md:gap-3 gap-2 pt-3"
                                 style={{
                                     gridTemplateColumns: "4rem auto"
                                 }}
                             >
+                                <span className="font-family-noto font-semibold">{t("lb_product_size")}</span>
+                                <BWPSelect
+                                    className="md:w-24" textAlign="center"
+                                >
+                                    <option value="black">黑色</option>
+                                    <option value="white">白色</option>
+                                </BWPSelect>
+                                <span className="font-family-noto font-semibold">{t("lb_product_color")}</span>
+                                <BWPSelect
+                                    className="md:w-24" textAlign="center"
+                                >
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                </BWPSelect>
                                 <span className="font-family-noto font-semibold">{t("lb_number")}</span>
-                                <BWPInput type="number" className="md:w-24" textAlign="center" defaultValue={number} allowClear={false} min={0}/>
+                                <BWPNumber className="md:w-24" inputSize="md" textAlign="center" defaultValue={number} min={0} max={12}/>
                             </div>
                         </div>
                         <button

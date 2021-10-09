@@ -43,7 +43,8 @@ const BWPCheckbox:React.FC<BWPInputProps> = ({
         xs: "w-4 h-4 rounded-4",
         sm: "w-6 h-6 rounded-6",
         md: "w-8 h-8 rounded-8",
-        lg: "w-10 h-10 rounded-10"
+        lg: "w-10 h-10 rounded-10",
+        xl: "w-10 h-10 rounded-10"
     }
 
     return (<div className={`${className}`}>
