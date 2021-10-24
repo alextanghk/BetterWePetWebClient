@@ -147,7 +147,7 @@ function Footer() {
     setLang(false);
   }
 
-  return (<footer className="border-bwp-light-grey border-t bg-bwp-white border-solid grid lg:grid-cols-2 grid-cols-1 mb-14 sm:mb-0 p-2 mt-3 h-19 px-3">
+  return (<footer className="border-bwp-light-grey border-t bg-bwp-white border-solid grid lg:grid-cols-2 grid-cols-1 mb-28 sm:mb-0 p-2 mt-3 h-19 px-3">
     <div className="md:text-base text-xs lg:text-left text-center">
       <span className="leading-10">&copy; { new Date().getFullYear() } Better We Pet. All rights reserved.</span>
     </div>
