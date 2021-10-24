@@ -107,5 +107,6 @@
     "lb_number":"數量",
     "lb_purchase":"購買此商品",
     "lb_product_size":"尺寸",
-    "lb_product_color":"顏色"
+    "lb_product_color":"顏色",
+    "lb_submit_order":"提交訂單"
 }

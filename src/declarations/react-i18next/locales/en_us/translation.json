@@ -107,5 +107,6 @@
     "lb_number":"Qty",
     "lb_purchase":"Purchase",
     "lb_product_size":"Size",
-    "lb_product_color":"Color"
+    "lb_product_color":"Color",
+    "lb_submit_order":"Submit Order"
 }
