@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshort of bwp button in md size 1`] = `
+exports[`BWP Button Render checking snapshort of bwp button in md size 1`] = `
 <button
   className="h-10 px-3 rounded-5 btn-bwp-green "
   data-testid="bwp-button"

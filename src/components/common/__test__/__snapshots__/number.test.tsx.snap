@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Horizontal BWP Number Render checking snapshort of horizontal bwp number in md size 1`] = `
+<div
+  className="undefined"
+>
+  <div
+    className=" relative flex w-full p-0.5 box-content bg-bwp-grey h-6 rounded-6"
+    data-testid="bwp-number"
+  >
+    <img
+      className="h-full flex-initial cursor-pointer"
+      data-testid="bwp-number-increase"
+      onClick={[Function]}
+      src="ico_plus.svg"
+    />
+    <input
+      className="bg-bwp-grey text-left w-full text-base"
+      data-testid="bwp-number-input"
+      type="number"
+    />
+    <img
+      className="[object Object] cursor-pointer"
+      data-testid="bwp-number-decrease"
+      onClick={[Function]}
+      src="ico_minus.svg"
+    />
+  </div>
+</div>
+`;
+
+exports[`Vertical BWP Number Render checking snapshort of vertical bwp number in md size 1`] = `
+<div
+  className="undefined"
+>
+  <div
+    className=" relative flex flex-col p-0.5 box-content bg-bwp-grey w-6 rounded-6"
+    data-testid="bwp-number"
+  >
+    <img
+      className="w-full cursor-pointer"
+      data-testid="bwp-number-increase"
+      onClick={[Function]}
+      src="ico_plus.svg"
+    />
+    <input
+      className="bg-bwp-grey text-left w-full text-base"
+      data-testid="bwp-number-input"
+      type="number"
+    />
+    <img
+      className="[object Object] cursor-pointer"
+      data-testid="bwp-number-decrease"
+      onClick={[Function]}
+      src="ico_minus.svg"
+    />
+  </div>
+</div>
+`;
