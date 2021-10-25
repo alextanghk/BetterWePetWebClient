@@ -57,19 +57,20 @@ const BWPNumber:React.FC<BWPNumberProps> = (props) => {
         xl : { container:`h-10 rounded-10`, input:`text-xl` },
     }
 
-    return vertical ? (<div className={ `${className}` }>
-        <div className={` relative flex flex-col p-0.5 box-content bg-bwp-grey ${sizeConfig[inputSize].container}`}>
-            <img src={IcoPlus} className={`w-full cursor-pointer`} onClick={handleOnIncrease}/>
-            <input ref={ref} type="number" className={`bg-bwp-grey text-${textAlign} w-full ${sizeConfig[inputSize].input}`} {...rest}/>
-            <img src={IcoMinus} className={`w-full cursor-pointer`} onClick={handleOnDecrease}/>
+    const styleConfig = vertical ? {
+        container: "flex-col", image: "w-full"
+    } : {
+        container: "w-full", image: "h-full flex-initial"
+    }
+    return (
+        <div className={ `${className}` }>
+            <div data-testid="bwp-number" className={` relative flex ${styleConfig.container} p-0.5 box-content bg-bwp-grey ${sizeConfig[inputSize].container}`}>
+                <img src={IcoPlus} data-testid="bwp-number-increase" className={`${styleConfig.image} cursor-pointer`} onClick={handleOnIncrease}/>
+                <input ref={ref} data-testid="bwp-number-input" type="number" className={`bg-bwp-grey text-${textAlign} w-full ${sizeConfig[inputSize].input}`} {...rest}/>
+                <img src={IcoMinus} data-testid="bwp-number-decrease" className={`${styleConfig} cursor-pointer`} onClick={handleOnDecrease}/>
+            </div>
         </div>
-    </div>) : (<div className={ `${className}` }>
-        <div className={` relative flex p-0.5 box-content w-full bg-bwp-grey ${sizeConfig[inputSize].container}`}>
-            <img src={IcoPlus} className={`h-full cursor-pointer flex-initial`} onClick={handleOnIncrease}/>
-            <input ref={ref} type="number" className={`bg-bwp-grey w-full text-${textAlign} ${sizeConfig[inputSize].input}`} {...rest}/>
-            <img src={IcoMinus} className={`h-full cursor-pointer flex-initial`} onClick={handleOnDecrease}/>
-        </div>
-    </div>)
+    )
 }
 
 export default BWPNumber
