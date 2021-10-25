@@ -3,7 +3,6 @@ import { BWPTypeColor, BWPTypeSize } from "../../Types";
 
 interface MyProps extends React.HTMLAttributes<HTMLButtonElement> {
     color?: BWPTypeColor,
-    txtColor?: string,
     size?: BWPTypeSize
 }
 
@@ -24,6 +23,7 @@ const BWPButton:React.FC<MyProps> = ({
     }
 
     return (<button
+        data-testid="bwp-button"
         className={`${sizeConfig[size]} btn-bwp-${color} ${className}`}
         {...props}
     >

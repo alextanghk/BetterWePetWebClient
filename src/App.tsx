@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './styles/index.scss';
 import './App.scss';
+import './declarations/react-i18next/config';
 
 // Import Project Elements
 import { BWPContext } from "./Context";

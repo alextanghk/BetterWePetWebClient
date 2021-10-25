@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './declarations/react-i18next/config';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

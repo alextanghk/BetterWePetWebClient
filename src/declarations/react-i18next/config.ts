@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import en_us from './locales/en_us/translation.json';
 import zh_hk from './locales/zh_hk/translation.json';
 
-export const resources = {
+const resources = {
     en_us: {
         translation: en_us
     },
@@ -16,3 +16,5 @@ export const resources = {
     lng: window.localStorage.defaultLanguage || 'zh_hk',
     resources,
   });
+
+export default i18n
