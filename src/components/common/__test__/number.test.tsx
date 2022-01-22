@@ -35,6 +35,17 @@ describe("Horizontal BWP Number Render checking", ()=>{
 })
 
 describe("BWP Number Function Check",()=>{
+
+    test("When on Change",()=>{
+        const onChange = jest.fn()
+        const { getByTestId } = render(<BWPNumber vertical={false} textAlign="left" inputSize="md" defaultValue={0} onChange={onChange}/>)
+        const testInput = getByTestId("bwp-number-input") as HTMLInputElement
+
+        fireEvent.change(testInput,{target:{value:3}})
+        expect(onChange).toBeCalled()
+        expect(testInput.value).toEqual("3")
+    })
+    
     test("When add value",() => {
         const { getByTestId } = render(<BWPNumber vertical={false} textAlign="left" inputSize="md" defaultValue={0}/>)
         const testClick = getByTestId("bwp-number-increase")
